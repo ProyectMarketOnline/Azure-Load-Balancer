@@ -11,22 +11,22 @@
 
 ## Descripción del Proyecto
 
-[cite_start]Este proyecto aborda la problemática de **MarketOnline S.A.C.**, una empresa de comercio electrónico que sufría caídas recurrentes en su sitio web durante campañas de alto tráfico (CyberWow) debido a una infraestructura monolítica[cite: 211, 214].
+Este proyecto aborda la problemática de **MarketOnline S.A.C.**, una empresa de comercio electrónico que sufría caídas recurrentes en su sitio web durante campañas de alto tráfico (CyberWow) debido a una infraestructura monolítica.
 
-[cite_start]El objetivo principal es migrar su infraestructura a **Microsoft Azure**, implementando un **Load Balancer (Balanceador de Carga)** que distribuya el tráfico entre múltiples servidores web ubicados en diferentes zonas de disponibilidad, garantizando así la continuidad del servicio y tolerancia a fallos[cite: 219, 222].
+El objetivo principal es migrar su infraestructura a **Microsoft Azure**, implementando un **Load Balancer (Balanceador de Carga)** que distribuya el tráfico entre múltiples servidores web ubicados en diferentes zonas de disponibilidad, garantizando así la continuidad del servicio y tolerancia a fallos.
 
 ## Arquitectura de la Solución
 
-[cite_start]La solución implementada utiliza una arquitectura distribuida en la región **West US 3** para asegurar redundancia y disponibilidad[cite: 226].
+La solución implementada utiliza una arquitectura distribuida en la región **West US 3** para asegurar redundancia y disponibilidad.
 
 ### Componentes Clave:
-* [cite_start]**Azure Load Balancer (SKU Standard):** Distribuye el tráfico entrante (Puerto 80) hacia el pool de servidores[cite: 247].
-* [cite_start]**Backend Pool:** Compuesto por 2 Máquinas Virtuales (Linux Ubuntu) con servidor web Apache[cite: 248].
+* **Azure Load Balancer (SKU Standard):** Distribuye el tráfico entrante (Puerto 80) hacia el pool de servidores.
+* **Backend Pool:** Compuesto por 2 Máquinas Virtuales (Linux Ubuntu) con servidor web Apache.
 * **Availability Zones:**
     * `VM-Web01`: Zona de Disponibilidad 1.
     * `VM-Web02`: Zona de Disponibilidad 2.
-* [cite_start]**Health Probes:** Monitorización constante vía HTTP/80 para detectar y aislar instancias fallidas[cite: 252].
-* [cite_start]**Red Virtual (VNet):** Segmentación segura mediante subredes y NSG (Network Security Groups)[cite: 230, 238].
+* **Health Probes:** Monitorización constante vía HTTP/80 para detectar y aislar instancias fallidas.
+* **Red Virtual (VNet):** Segmentación segura mediante subredes y NSG (Network Security Groups).
 
 ## Tecnologías Utilizadas
 
@@ -38,7 +38,7 @@
 
 ## Hoja de Ruta (Roadmap SCRUM)
 
-[cite_start]El proyecto se gestiona bajo metodología Ágil/SCRUM dividido en 4 Sprints[cite: 224]:
+El proyecto se gestiona bajo metodología Ágil/SCRUM dividido en 4 Sprints:
 
 * [x] **Sprint 0: Planificación**
     * Definición del Acta de Constitución y Product Backlog.
@@ -52,7 +52,7 @@
     * Pruebas de failover y distribución de tráfico.
 * [ ] **Sprint 3: Seguridad y Monitoreo (En Progreso)**
     * Hardening de NSGs.
-    * [cite_start]Configuración de alertas en Azure Monitor[cite: 263].
+    * Configuración de alertas en Azure Monitor.
 
 ## Despliegue e Instalación
 
@@ -76,4 +76,4 @@ Pasos generales seguidos para la implementación:
 | **Silva Pino, Jesus Francisco** | **Cloud Architect / Tech Lead** |
 
 ---
-[cite_start]*Este proyecto fue desarrollado como parte del curso "Proyecto Integrador - Implementación Cloud" de la carrera de Administración de Redes y Comunicaciones[cite: 206].*
+*Este proyecto fue desarrollado como parte del curso "Proyecto Integrador - Implementación Cloud" de la carrera de Administración de Redes y Comunicaciones*
