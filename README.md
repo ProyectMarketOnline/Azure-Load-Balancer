@@ -1,79 +1,92 @@
-# Proyecto: Alta Disponibilidad y Balanceo de Carga en Azure
+# ☁️ Proyecto 15: Alta Disponibilidad y Balanceo de Carga en Azure
 
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Apache](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=Apache&logoColor=white)
-![Status](https://img.shields.io/badge/STATUS-EN%20DESARROLLO-yellow?style=for-the-badge)
+![Status](https://img.shields.io/badge/STATUS-FINALIZADO-brightgreen?style=for-the-badge)
 
-> **Implementación de una arquitectura de alta disponibilidad para MarketOnline S.A.C. utilizando Azure Load Balancer y Redundancia de Zona.**
-
----
-
-## Descripción del Proyecto
-
-Este proyecto aborda la problemática de **MarketOnline S.A.C.**, una empresa de comercio electrónico que sufría caídas recurrentes en su sitio web durante campañas de alto tráfico (CyberWow) debido a una infraestructura monolítica.
-
-El objetivo principal es migrar su infraestructura a **Microsoft Azure**, implementando un **Load Balancer (Balanceador de Carga)** que distribuya el tráfico entre múltiples servidores web ubicados en diferentes zonas de disponibilidad, garantizando así la continuidad del servicio y tolerancia a fallos.
-
-## Arquitectura de la Solución
-
-La solución implementada utiliza una arquitectura distribuida en la región **West US 3** para asegurar redundancia y disponibilidad.
-
-### Componentes Clave:
-* **Azure Load Balancer (SKU Standard):** Distribuye el tráfico entrante (Puerto 80) hacia el pool de servidores.
-* **Backend Pool:** Compuesto por 2 Máquinas Virtuales (Linux Ubuntu) con servidor web Apache.
-* **Availability Zones:**
-    * `VM-Web01`: Zona de Disponibilidad 1.
-    * `VM-Web02`: Zona de Disponibilidad 2.
-* **Health Probes:** Monitorización constante vía HTTP/80 para detectar y aislar instancias fallidas.
-* **Red Virtual (VNet):** Segmentación segura mediante subredes y NSG (Network Security Groups).
-
-## Tecnologías Utilizadas
-
-* **Proveedor Cloud:** Microsoft Azure (Región West US 3).
-* **Sistema Operativo:** Ubuntu Server 20.04 / 24.04 LTS.
-* **Servidor Web:** Apache2 HTTP Server.
-* **Redes:** Virtual Networks, Public IPs, Network Security Groups.
-* **Herramientas:** Azure Portal, PuTTY (SSH), GitHub Projects (Gestión SCRUM).
-
-## Hoja de Ruta (Roadmap SCRUM)
-
-El proyecto se gestiona bajo metodología Ágil/SCRUM dividido en 4 Sprints:
-
-* [x] **Sprint 0: Planificación**
-    * Definición del Acta de Constitución y Product Backlog.
-* [x] **Sprint 1: Infraestructura Base**
-    * Despliegue de VNet y Subredes (`WebSubnet`).
-    * Aprovisionamiento de VMs en Zonas 1 y 2.
-    * Instalación de servidores web Apache.
-* [x] **Sprint 2: Balanceo de Carga**
-    * Configuración del Azure Load Balancer Standard.
-    * Implementación de Health Probes y Reglas de Balanceo.
-    * Pruebas de failover y distribución de tráfico.
-* [ ] **Sprint 3: Seguridad y Monitoreo (En Progreso)**
-    * Hardening de NSGs.
-    * Configuración de alertas en Azure Monitor.
-
-## Despliegue e Instalación
-
-Pasos generales seguidos para la implementación:
-
-1.  **Creación de Grupo de Recursos:** `RG-MarketOnline-Prod`.
-2.  **Configuración de Red:** Creación de `VNet-MarketOnline` (10.0.0.0/16).
-3.  **Despliegue de Servidores:**
-    ```bash
-    # Instalación de Apache en cada nodo
-    sudo apt-get update
-    sudo apt-get install apache2 -y
-    echo "<h1>Hola desde el Servidor X</h1>" | sudo tee /var/www/html/index.html
-    ```
-4.  **Configuración del Balanceador:** Asociación de Frontend IP, Backend Pool y Sondas de Salud.
-
-## Equipo del Proyecto
-
-| Integrante | Rol |
-| :--- | :--- |
-| **Silva Pino, Jesus Francisco** | **Cloud Architect / Tech Lead** |
+> **Implementación de una arquitectura de alta disponibilidad para MarketOnline S.A.C. utilizando Azure Load Balancer, Redundancia de Zona y Seguridad Perimetral.**
 
 ---
-*Este proyecto fue desarrollado como parte del curso "Proyecto Integrador - Implementación Cloud" de la carrera de Administración de Redes y Comunicaciones*
+
+## 📖 Descripción del Proyecto
+
+Este proyecto soluciona la problemática de **MarketOnline S.A.C.**, asegurando que su plataforma de comercio electrónico permanezca operativa durante eventos de alto tráfico (CyberWow). 
+
+Se ha migrado de una infraestructura monolítica a una arquitectura distribuida en **Microsoft Azure**, implementando un **Load Balancer** que distribuye el tráfico entre servidores redundantes y se recupera automáticamente ante fallos (Failover).
+
+## 🏗️ Arquitectura de la Solución
+
+La infraestructura se encuentra desplegada en la región **West US 3** aprovechando las Zonas de Disponibilidad (Availability Zones).
+
+### Componentes Implementados:
+* **Azure Load Balancer (Standard):** Punto de entrada único que balancea el tráfico HTTP (Puerto 80).
+* **Backend Pool Distribuido:**
+    * `VM-Web01`: Zona 1 (Ubuntu 24.04 + Apache).
+    * `VM-Web02`: Zona 2 (Ubuntu 24.04 + Apache).
+* **Health Probes:** Sondas de salud TCP/80 que aíslan nodos defectuosos en <5 segundos.
+* **Seguridad (NSG):** Filtrado de tráfico a nivel de red (Capa 4).
+* **Observabilidad:** Tablero de métricas en Azure Monitor.
+
+## 🎯 Épicas Logradas
+
+Se ha dado cumplimiento al 100% de las Historias de Usuario definidas en el alcance del proyecto:
+
+### ✅ ÉPICA 1: Preparación de la Infraestructura Base
+**Objetivo:** Crear los recursos fundamentales de red y cómputo.
+- [x] Despliegue de Virtual Network (`VNet`) y subredes.
+- [x] Configuración de Máquinas Virtuales en zonas de disponibilidad cruzadas.
+- [x] Instalación y configuración de servidores web Apache.
+
+### ✅ ÉPICA 2: Configuración del Azure Load Balancer
+**Objetivo:** Implementar la distribución de tráfico y redundancia.
+- [x] Implementación de Load Balancer SKU Standard con IP Pública.
+- [x] Asociación del Backend Pool con las interfaces de red.
+- [x] Configuración de Health Probes (Puerto 80) y Reglas de Balanceo.
+
+### ✅ ÉPICA 3: Monitoreo, Seguridad y Optimización
+**Objetivo:** Garantizar la observabilidad, seguridad y eficiencia.
+- [x] **Hardening:** Restricción de acceso SSH (Puerto 22) solo a IP administrativa.
+- [x] **Alertas:** Notificación automática por correo ante caída de nodos.
+- [x] **Dashboard:** Visualización en tiempo real de disponibilidad y tráfico.
+
+### ✅ ÉPICA 4: Documentación y Presentación
+**Objetivo:** Elaborar la documentación técnica y evidencias.
+- [x] Manual técnico de despliegue.
+- [x] Pruebas de estrés y validación de Failover documentadas.
+- [x] Video demostrativo de funcionamiento.
+
+## 🛡️ Detalles de Seguridad (Hardening)
+
+Como parte de la estrategia de defensa en profundidad:
+* **Acceso Restringido (SSH):** El puerto 22 ha sido bloqueado para internet, permitiendo conexión únicamente desde la IP de gestión autorizada.
+* **Superficie de Ataque Reducida:** Solo el puerto 80 (HTTP) es público. Puertos críticos (21, 445, 3389) están denegados por defecto.
+
+## Documentación y Evidencias
+
+En este repositorio encontrarás los entregables detallados:
+
+* **[Manual Técnico de Implementación](/docs/Manual_Tecnico_MarketOnline.pdf):** Guía paso a paso de la configuración.
+* **Evidencias:** Capturas de pantalla de pruebas de Failover y Seguridad en la carpeta `/evidencias`.
+* **Demostración:** [Ver Video del Proyecto en Funcionamiento]
+
+## Despliegue Rápido (Snippet)
+
+Comandos utilizados para la provisión de los servidores web:
+
+```bash
+# Actualización e instalación de Apache
+sudo apt-get update && sudo apt-get install apache2 -y
+
+# Personalización del Index
+sudo bash -c 'cat > /var/www/html/index.html <<EOF
+<!DOCTYPE html>
+<html>
+<head><title>MarketOnline</title></head>
+<body>
+    <div style="background-color:#1e293b;color:#4ade80;padding:10px;text-align:center">
+        CONECTADO A: <span style="color:white;font-weight:bold">VM-WEB01</span>
+    </div>
+</body>
+</html>
+EOF'
