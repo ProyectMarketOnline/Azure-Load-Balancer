@@ -76,4 +76,4 @@ Pasos generales seguidos para la implementación:
 | **Silva Pino, Jesus Francisco** | **Cloud Architect / Tech Lead** |
 
 ---
-[cite_start]*Este proyecto fue desarrollado como parte del curso "Proyecto Integrador - Implementación Cloud" de la carrera de Administración de Redes y Comunicaciones[cite: 206].*
+[cite_start]*Este proyecto fue desarrollado como parte del curso "Proyecto Integrador - Implementación Cloud" de la carrera de Administración de Redes y Comunicaciones.*
