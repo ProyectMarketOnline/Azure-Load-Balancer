@@ -66,9 +66,9 @@ Como parte de la estrategia de defensa en profundidad:
 
 En este repositorio encontrarás los entregables detallados:
 
-* **[Manual Técnico de Implementación](/docs/Manual_Tecnico_MarketOnline.pdf):** Guía paso a paso de la configuración.
+* **[Manual Técnico de Implementación](/Reportes_Finales/Manual_Tecnico_MarketOnline.pdf):** Guía paso a paso de la configuración.
 * **Evidencias:** Capturas de pantalla de pruebas de Failover y Seguridad en la carpeta `/evidencias`.
-* **Demostración:** [Ver Video del Proyecto en Funcionamiento]
+* **Demostración:** [Ver Video del Proyecto en Funcionamiento](/Evidencias/Muestra_Final.gif)
 
 ## Despliegue Rápido (Snippet)
 
